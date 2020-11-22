@@ -50,7 +50,7 @@ function handleMove(request, response) {
     function removeMove(x) {
       const index = possibleMoves.indexOf(x);
       if (index > -1){
-        Array.splice(index, 1);
+        possibleMoves.splice(index, 1);
       }
     }
     //TODO: First we want to check the size of the board, and make sure we stay on the board.
