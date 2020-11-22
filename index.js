@@ -102,12 +102,14 @@ function handleMove(request, response) {
   stayOnBoard(gameData); // WORKS!!
   preventCollision(gameData);
 
-    let index = possibleMoves.indexOf(lastMove);
-    if (index > -1){
-      possibleMoves.splice(index, 1);
+    let index = possibleMoves.indexOf(lastMove); //find if the last move is in the list
+    if (index > -1){ / if it is in the list
+      var move = lastMove
+    }
+    else{
+      var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
     }
 
-  var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
   console.log(possibleMoves)
   console.log(possibleMoves.length)
   
