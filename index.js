@@ -65,17 +65,22 @@ function handleMove(request, response) {
         
         if (quox === rightSide){ //horizontal avoidance
           console.log('cant go right')
-          return delete possibleMoves[3] // prevents moving right   
+        possibleMoves.splice(3,3) // prevents moving right  
+          return possibleMoves // prevents moving right   
         }
         if (quox === leftSide){
           console.log('cant go left')
-          return delete possibleMoves[2] // prevents moving right
+          possibleMoves.splice(2,2) // prevents moving right  
+
+          return delete possibleMoves // prevents moving right
           }
 }
 
   stayOnBoard(gameData, lastMove);
 
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+
+  
   lastMove = move;
   console.log('MOVE: ' + move)
   response.status(200).send({
