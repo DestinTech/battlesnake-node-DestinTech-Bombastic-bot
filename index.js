@@ -47,18 +47,19 @@ function handleMove(request, response) {
     //TODO: First we want to check the size of the board, and make sure we stay on the board.
     //if head = on left, bottom, top or rigth edge of the board, then
         // var  possibleMoves = !the way to die
+
+        // If the last move was up, we can't go down. if the last move was left, we cant go right. 
         let height = gameData.board.height;
         let width = gameData.board.width;
 
         let quox = gameData.you.head.x; 
         let quoy = gameData.you.head.y; 
-        console.log("height: " + height + "width" +width + "x"+ quoy+ "y:"+ quox);
+        console.log("width: " +width + ", x: "+ quox + ", y: "+ quoy);
 
 }
-  //Here we start our code to handle the battlefield. 
-  // console.log(gameData);
+
   stayOnBoard(gameData);
-  
+
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
   console.log('MOVE: ' + move)
   response.status(200).send({
