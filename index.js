@@ -104,6 +104,8 @@ function handleMove(request, response) {
     move: move
   })
   var possibleMoves = ['up', 'down', 'left', 'right']
+  console.log(gameData);
+
 
 }
 
