@@ -80,7 +80,7 @@ function handleMove(request, response) {
           }
 }
 
-  stayOnBoard(gameData, lastMove);
+  stayOnBoard(gameData);
 
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
   console.log(possibleMoves)
