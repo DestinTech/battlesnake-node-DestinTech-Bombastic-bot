@@ -48,7 +48,7 @@ function handleMove(request, response) {
     //if head = on left, bottom, top or rigth edge of the board, then
         // var  possibleMoves = !the way to die
         let height = gameData.board.height;
-        let width = game.board.width;
+        let width = gameData.board.width;
 
 
 }
