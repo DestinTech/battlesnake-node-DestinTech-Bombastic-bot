@@ -102,7 +102,7 @@ function handleMove(request, response) {
   stayOnBoard(gameData); // WORKS!!
   preventCollision(gameData);
 
-    let index = possibleMoves.indexOf(x);
+    let index = possibleMoves.indexOf(lastMove);
     if (index > -1){
       possibleMoves.splice(index, 1);
     }
