@@ -46,6 +46,10 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right']
 
   function stayOnBoard(gameData){
+    const remLeft = possibleMoves.splice(2,2)
+    const remRight = possibleMoves.splice(3,3)
+    const remUp = possibleMoves.splice(0,0)
+    const remDown = possibleMoves.splice(1,1)
     //TODO: First we want to check the size of the board, and make sure we stay on the board.
     //if head = on left, bottom, top or rigth edge of the board, then
         // var  possibleMoves = !the way to die
@@ -65,13 +69,12 @@ function handleMove(request, response) {
         
         if (quox === rightSide){ //horizontal avoidance
           console.log('cant go right')
-        possibleMoves.splice(3,3) // prevents moving right  
+          remRight();
           return possibleMoves // prevents moving right   
         }
         if (quox === leftSide){
           console.log('cant go left')
-          possibleMoves.splice(2,2) // prevents moving right  
-
+          remLeft();
           return delete possibleMoves // prevents moving right
           }
 }
