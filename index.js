@@ -47,10 +47,14 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right']
 
   function stayOnBoard(gameData){
-    const remLeft = () => possibleMoves.splice(2,2)
-    const remRight = () => possibleMoves.splice(3,3)
-    const remUp = () => possibleMoves.splice(0,1)
-    const remDown = ()=> possibleMoves.splice(1,1)
+    function removeMove(x) {
+      const index = possibleMoves.indexOf(x);
+      if (index > -1){
+        Array.splice(index, 1);
+      }
+    }
+  }
+
     //TODO: First we want to check the size of the board, and make sure we stay on the board.
     //if head = on left, bottom, top or rigth edge of the board, then
         // var  possibleMoves = !the way to die
@@ -68,21 +72,25 @@ function handleMove(request, response) {
         const top = height - 1;
         const bottom = 0;
         
+
+        /* 
+        This method won't work, as it's splicing by location in the array.  The location is changing before the second removal is activated. 
+        */
         if (quox === rightSide || lastMove === "left"){ //horizontal avoidance
           console.log('cant go right')
-          remRight();
+          removeMove("right");
         }
         if (quox === leftSide || lastMove === "right"){
           console.log('cant go left')
-          remLeft();
+          removeMove("left");
         }
         if (quoy === top || lastMove === "down"){
           console.log('cant go up')
-          remUp();
+          removeMove("up");
         }
         if (quoy === bottom || lastMove === "up"){
           console.log('cant go down')
-          remDown();
+          removeMove("down");
         }
         return possibleMoves
         
