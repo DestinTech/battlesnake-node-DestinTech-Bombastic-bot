@@ -53,8 +53,6 @@ function handleMove(request, response) {
         Array.splice(index, 1);
       }
     }
-  }
-
     //TODO: First we want to check the size of the board, and make sure we stay on the board.
     //if head = on left, bottom, top or rigth edge of the board, then
         // var  possibleMoves = !the way to die
@@ -91,12 +89,10 @@ function handleMove(request, response) {
         if (quoy === bottom || lastMove === "up"){
           console.log('cant go down')
           removeMove("down");
-        }
-        return possibleMoves
-        
+        }        
 }
 
-  possibleMoves = stayOnBoard(gameData);
+  stayOnBoard(gameData);
 
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
   console.log(possibleMoves)
