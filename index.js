@@ -41,7 +41,10 @@ function handleEnd(request, response) {
 
 function handleMove(request, response) {
   var gameData = request.body
-  try (console.log(lastMove));
+  try {console.log(lastMove)}
+  catch(err){
+    console.log(err)
+  }
   var possibleMoves = ['up', 'down', 'left', 'right']
 
   function stayOnBoard(gameData, lastMove){
