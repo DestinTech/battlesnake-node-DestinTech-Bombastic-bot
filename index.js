@@ -50,9 +50,9 @@ function handleMove(request, response) {
         let height = gameData.board.height;
         let width = gameData.board.width;
 
-        let horx = gameData.you.head.y; 
-        let verx = gameData.you.head.x; 
-
+        let quox = gameData.you.head.x; 
+        let quoy = gameData.you.head.y; 
+        console.log("height: " + height + "width" +width + "x"+ quoy+ "y:"+ quox);
 
 }
   //Here we start our code to handle the battlefield. 
