@@ -27,9 +27,8 @@ function handleIndex(request, response) {
 
 function handleStart(request, response) {
   var gameData = request.body
-console.log("width: " +width );
-
-
+  console.log(gameData.board.width)
+  
   console.log('START')
   response.status(200).send('ok')
 }
@@ -59,9 +58,9 @@ function handleMove(request, response) {
         // If the last move was up, we can't go down. if the last move was left, we cant go right. 
         let height = gameData.board.height;
         let width = gameData.board.width;
-
         let quox = gameData.you.head.x;  //horizontal
         let quoy = gameData.you.head.y; //vertical 
+
         console.log("width: " +width + ", x: "+ quox + ", y: "+ quoy);
 
         const leftSide = 0;
@@ -77,14 +76,15 @@ function handleMove(request, response) {
         if (quox === leftSide){
           console.log('cant go left')
           remLeft();
-          return delete possibleMoves // prevents moving right
+          return possibleMoves // prevents moving right
           }
 }
 
   stayOnBoard(gameData, lastMove);
 
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
-console.log(possibleMoves)
+  console.log(possibleMoves)
+  console.log(possibleMoves.length)
   
   lastMove = move;
   console.log('MOVE: ' + move)
