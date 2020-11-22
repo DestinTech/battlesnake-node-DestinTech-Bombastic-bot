@@ -49,7 +49,7 @@ function handleMove(request, response) {
 
   function preventCollision(gameData) {
     body = gameData.body;
-    console.log(body[1]);
+    console.log(gameData);
   }
 
 
