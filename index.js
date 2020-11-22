@@ -103,7 +103,7 @@ function handleMove(request, response) {
   preventCollision(gameData); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
     let index = possibleMoves.indexOf(lastMove); //find if the last move is in the list
-    if (index > -1){ / if it is in the list
+    if (index > -1){ // if it is in the list
       var move = lastMove
     }
     else{
