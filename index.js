@@ -50,8 +50,8 @@ function handleMove(request, response) {
         let height = gameData.board.height;
         let width = gameData.board.width;
 
-        let horx = gameData.you.head[y]; 
-        let verx = gameData.you.head[x]; 
+        let horx = gameData.you.head.y; 
+        let verx = gameData.you.head.x; 
 
 
 }
