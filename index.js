@@ -39,12 +39,10 @@ function handleEnd(request, response) {
   response.status(200).send('ok')
 }
 
-function handleMove(request, response) {
+let lastMove;
+function handleMove(request, response, lastMove) {
   var gameData = request.body
-  try {console.log(lastMove)}
-  catch(err){
-    console.log(err)
-  }
+  console.log(lastMove);
   var possibleMoves = ['up', 'down', 'left', 'right']
 
   function stayOnBoard(gameData, lastMove){
@@ -64,16 +62,15 @@ function handleMove(request, response) {
         const rightSide = width - 1;
         const top = height - 1;
         const bottom = 0;
-
         
 
 
 }
 
-  stayOnBoard(gameData);
+  stayOnBoard(gameData, lastMove);
 
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
-  let lastMove = move;
+  lastMove = move;
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
