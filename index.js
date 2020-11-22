@@ -71,27 +71,24 @@ function handleMove(request, response) {
         if (quox === rightSide || lastMove === "left"){ //horizontal avoidance
           console.log('cant go right')
           remRight();
-          return possibleMoves // prevents moving right   
         }
         if (quox === leftSide || lastMove === "right"){
           console.log('cant go left')
           remLeft();
-          return possibleMoves // prevents moving right
         }
         if (quoy === top || lastMove === "down"){
           console.log('cant go up')
           remUp();
-          return possibleMoves // prevents moving right
         }
         if (quoy === bottom || lastMove === "up"){
           console.log('cant go down')
           remDown();
-          return possibleMoves // prevents moving right
         }
+        return possibleMoves
         
 }
 
-  stayOnBoard(gameData);
+  possibleMoves = stayOnBoard(gameData);
 
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
   console.log(possibleMoves)
