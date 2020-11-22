@@ -49,7 +49,7 @@ function handleMove(request, response) {
 
   function preventCollision(gameData) {
     body = gameData.body;
-    console.log(body.map());
+    console.log(body[1]);
   }
 
 
@@ -117,7 +117,6 @@ function handleMove(request, response) {
     move: move
   })
   var possibleMoves = ['up', 'down', 'left', 'right']
-  console.log(gameData.body);
 
 
 }
