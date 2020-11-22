@@ -47,10 +47,10 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right']
 
   function stayOnBoard(gameData){
-    const remLeft = () => possibleMoves.splice(2,3)
-    const remRight = () => possibleMoves.splice(3,4)
+    const remLeft = () => possibleMoves.splice(2,2)
+    const remRight = () => possibleMoves.splice(3,3)
     const remUp = () => possibleMoves.splice(0,1)
-    const remDown = ()=> possibleMoves.splice(1,2)
+    const remDown = ()=> possibleMoves.splice(1,1)
     //TODO: First we want to check the size of the board, and make sure we stay on the board.
     //if head = on left, bottom, top or rigth edge of the board, then
         // var  possibleMoves = !the way to die
