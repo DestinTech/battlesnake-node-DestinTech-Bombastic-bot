@@ -41,9 +41,10 @@ function handleEnd(request, response) {
 
 function handleMove(request, response) {
   var gameData = request.body
+  try (console.log(lastMove));
   var possibleMoves = ['up', 'down', 'left', 'right']
 
-  function stayOnBoard(gameData){
+  function stayOnBoard(gameData, lastMove){
     //TODO: First we want to check the size of the board, and make sure we stay on the board.
     //if head = on left, bottom, top or rigth edge of the board, then
         // var  possibleMoves = !the way to die
@@ -52,15 +53,24 @@ function handleMove(request, response) {
         let height = gameData.board.height;
         let width = gameData.board.width;
 
-        let quox = gameData.you.head.x; 
-        let quoy = gameData.you.head.y; 
+        let quox = gameData.you.head.x;  //horizontal
+        let quoy = gameData.you.head.y; //vertical 
         console.log("width: " +width + ", x: "+ quox + ", y: "+ quoy);
+
+        const leftSide = 0;
+        const rightSide = width - 1;
+        const top = height - 1;
+        const bottom = 0;
+
+        
+
 
 }
 
   stayOnBoard(gameData);
 
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
+  let lastMove = move;
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
