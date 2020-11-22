@@ -44,11 +44,18 @@ let lastMove;
 function handleMove(request, response) {
   var gameData = request.body
   console.log("lastMove: " +lastMove);
+
   var possibleMoves = ['up', 'down', 'left', 'right']
+
+  function preventCollision(gameData) {
+    body = gameData.body;
+    console.log(body.map());
+  }
+
 
   function stayOnBoard(gameData){
     function removeMove(x) {
-      const index = possibleMoves.indexOf(x);
+      let index = possibleMoves.indexOf(x);
       if (index > -1){
         possibleMoves.splice(index, 1);
       }
@@ -92,8 +99,14 @@ function handleMove(request, response) {
         }        
 }
 
-  stayOnBoard(gameData);
-  
+  stayOnBoard(gameData); // WORKS!!
+  preventCollision(gameData);
+
+    let index = possibleMoves.indexOf(x);
+    if (index > -1){
+      possibleMoves.splice(index, 1);
+    }
+
   var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
   console.log(possibleMoves)
   console.log(possibleMoves.length)
