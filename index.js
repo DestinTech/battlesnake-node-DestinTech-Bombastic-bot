@@ -63,8 +63,12 @@ function handleMove(request, response) {
         const top = height - 1;
         const bottom = 0;
         
-
-
+        if (quox === rightSide){ //horizontal avoidance
+          return delete possibleMoves[3] // prevents moving right   
+        }
+        if (quox === leftSide){
+          return delete possibleMoves[2] // prevents moving right
+          }
 }
 
   stayOnBoard(gameData, lastMove);
