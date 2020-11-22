@@ -99,6 +99,8 @@ function handleMove(request, response) {
   response.status(200).send({
     move: move
   })
+  var possibleMoves = ['up', 'down', 'left', 'right']
+
 }
 
 
