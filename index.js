@@ -42,7 +42,7 @@ function handleEnd(request, response) {
 let lastMove;
 function handleMove(request, response) {
   var gameData = request.body
-  console.log(lastMove);
+  console.log("lastMove: " +lastMove);
   var possibleMoves = ['up', 'down', 'left', 'right']
 
   function stayOnBoard(gameData){
@@ -64,9 +64,11 @@ function handleMove(request, response) {
         const bottom = 0;
         
         if (quox === rightSide){ //horizontal avoidance
+          console.log('cant go right')
           return delete possibleMoves[3] // prevents moving right   
         }
         if (quox === leftSide){
+          console.log('cant go left')
           return delete possibleMoves[2] // prevents moving right
           }
 }
