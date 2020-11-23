@@ -50,7 +50,6 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right'];
   let move;
   let me = snakeFactory('you', gameData);
-  console.log(me);
 
   stayOnBoard(gameData, possibleMoves); // WORKS!!
   preventCollision(gameData, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
@@ -79,6 +78,7 @@ const snakeFactory = (name, gameData) =>{
   let location;
   let length;
   let selSnake;
+  name = name;
 
   const checkLocation = ((name, gameData) => {
     if(name === "you"){
