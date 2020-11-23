@@ -123,9 +123,8 @@ function preventCollision(move, me, possibleMoves) {
         if (JSON.stringify(plannedMove.head) === JSON.stringify(prop)) {
           removeMove(move, possibleMoves);
           dangerousMove = move;
-          move =
-            possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
-          console.log(`DANGER! changing from ${dangerousMove} to ${move}.`);
+          console.log(`DANGER! changing from ${dangerousMove}.`);
+          return possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
         }
         console.log(plannedMove.head);
         console.log(prop);
@@ -133,13 +132,14 @@ function preventCollision(move, me, possibleMoves) {
       console.log(`the move appears safe, moving ${move}...`);
        
     }
+
     console.log("returning"+ move);
     return move;
   }
 
 
     plannedMove = lookAhead(); //get the quordinates of the chosen next move
-    checkHazards(plannedMove); //check for hazards on the next quordinate, change move if there is danger.
+    move = checkHazards(plannedMove); //check for hazards on the next quordinate, change move if there is danger.
     //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
     return move;
 }
