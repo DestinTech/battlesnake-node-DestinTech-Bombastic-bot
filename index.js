@@ -49,7 +49,7 @@ function handleMove(request, response) {
 
   var possibleMoves = ['up', 'down', 'left', 'right'];
   let move;
-  let me = snakeFactory('you');
+  let me = snakeFactory('you', gameData);
   console.log(me);
 
   stayOnBoard(gameData, possibleMoves); // WORKS!!
