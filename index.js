@@ -88,6 +88,7 @@ const snakeFactory = (name, gameData) =>{
     else{
       //selSnake = enemySnakes[name];
     }
+    console.log(selSnake);
     location = {
       'head': {
         'x':[selSnake].head.x,
