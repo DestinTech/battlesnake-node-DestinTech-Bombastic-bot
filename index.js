@@ -52,8 +52,8 @@ function handleMove(request, response) {
   console.log("lastMove: " +lastMove);
 
   stayOnBoard(gameData, possibleMoves); // WORKS!!
-  preventCollision(gameData, move, me); // TODO: define the quardinates of the body, and keep 1 block from the snake
   move = stayOnTrack(possibleMoves);
+  preventCollision(gameData, move, me); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
   console.log(possibleMoves);
   console.log('MOVE: ' + move + "\n")
@@ -66,16 +66,17 @@ function handleMove(request, response) {
 function preventCollision(gameData,move, me) {
   //here we will check what space the "move" we want to make will occupy.
   me = me;
-  let oracle={
-    head:{
-    'x':{},
-    'y':{}
-    }
-  }
+
   
   
   function lookAhead(){
 console.log(me)
+let oracle={
+  head:{
+  'x':{},
+  'y':{}
+  }
+}
     if (move === "down"){
       oracle.y = me.location.head.y -1; 
       oracle.x = me.location.head.x;
@@ -94,9 +95,12 @@ console.log(me)
       oracle.x = me.location.head.x +1;
       oracle.y = me.location.head.y;
     }
+    else{
+      console.log('error');
+    }
+    return oracle;
   }
-  console.log(lookAhead());
-  console.log(oracle);
+  return lookAhead();
 }
 
 
