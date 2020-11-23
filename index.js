@@ -44,32 +44,22 @@ function handleEnd(request, response) {
 
 function handleMove(request, response) {
   var gameData = request.body;
+  console.log("New Move... Thinking...: \n");
   console.log("lastMove: " +lastMove);
 
-  var possibleMoves = ['up', 'down', 'left', 'right']
-
+  var possibleMoves = ['up', 'down', 'left', 'right'];
+  let move;
 
   stayOnBoard(gameData, possibleMoves); // WORKS!!
-  preventCollision(gameData); // TODO: define the quardinates of the body, and keep 1 block from the snake
+  preventCollision(gameData, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
+  move = stayOnTrack(lastMove, PossibleMoves);
 
-    let index = possibleMoves.indexOf(lastMove); //find if the last move is in the list
-    if (index > -1){ // if it is in the list
-      var move = lastMove
-    }
-    else{
-      var move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]
-    }
-  console.log(possibleMoves)
-  console.log(possibleMoves.length)
+  console.log("\n"+ possibleMoves);
   
-  lastMove = move;
   console.log('MOVE: ' + move)
   response.status(200).send({
     move: move
-  })
-  var possibleMoves = ['up', 'down', 'left', 'right']
-
-
+  });
 }
 function preventCollision(gameData) {
 
@@ -148,6 +138,16 @@ function stayOnBoard(gameData, possibleMoves){
         console.log('cant go down')
         removeMove("down");
       }        
+}
+
+function stayOnTrack(lastMove, possibleMoves){
+  let index = possibleMoves.indexOf(lastMove); //find if the last move is in the list
+    if (index > -1){ // if it is in the list
+      return lastMove;  // do what we did last if it's an option.
+    }
+    else{
+      return possibleMoves[Math.floor(Math.random() * possibleMoves.length)] //otherwise, random move that's avaialable.
+    }
 }
 
 // {
