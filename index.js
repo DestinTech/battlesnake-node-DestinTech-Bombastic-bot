@@ -107,7 +107,8 @@ function preventCollision(move, me, possibleMoves) {
 
     return plannedMove;
   }
-  function checkHazards(me, plannedMove, move, possibleMoves) {
+
+  function checkHazards(me, plannedMove, move) {
     // in this function we verify if the quordinates found in lookAhead are safe to move to.
     let snake = me.location;
     let hazards = [
@@ -134,14 +135,14 @@ function preventCollision(move, me, possibleMoves) {
       }
       console.log(`the move appears safe, moving ${move}...`);
     }
+  }
+
 
     plannedMove = lookAhead(); //get the quordinates of the chosen next move
-    checkHazards(me, plannedMove, move, possibleMoves); //check for hazards on the next quordinate, change move if there is danger.
+    checkHazards(me, plannedMove, move); //check for hazards on the next quordinate, change move if there is danger.
     //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
     return move;
-  }
 }
-
 const snakeFactory = (name, gameData) => {
   //let enemySnakes = gameData.board.snakes;
   //console.log(enemySnakes);
