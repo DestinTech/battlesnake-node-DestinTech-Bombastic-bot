@@ -122,7 +122,7 @@ function preventCollision(move, me, possibleMoves) {
       console.log(plannedMove.head);
       console.log('\n');
       for (prop of hazard) {
-        if (plannedMove.head === prop) {
+        if (plannedMove.head == prop) {
           removeMove(move, possibleMoves);
           dangerousMove = move;
           move =
