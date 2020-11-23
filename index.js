@@ -117,11 +117,10 @@ function preventCollision(move, me, possibleMoves) {
     ];
 
     //check for quordinate == the locations to our expected next move
-    console.log("Hazards: ");
     for (hazard of hazards) {
       //Loop thoguh all hazards
       console.log(plannedMove.head);
-
+      console.log('\n');
       for (prop of hazard) {
         if (plannedMove.head === prop) {
           removeMove(move, possibleMoves);
