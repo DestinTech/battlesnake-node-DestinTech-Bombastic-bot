@@ -118,7 +118,7 @@ function preventCollision(move, me, possibleMoves) {
     for (let hazard in hazards) { //Loop thoguh all hazards
       haz = hazards[hazard];
       console.log({ haz });//print all the hazards to console.
-
+      console.log({plannedMove})
       if (plannedMove === hazards[hazard]) { // if the pkanned
         removeMove(move, possibleMoves);
         dangerousMove = move;
