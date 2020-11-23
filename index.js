@@ -78,22 +78,22 @@ let oracle={
   }
 }
     if (move === "down"){
-      oracle.y = me.location.head.y -1; 
-      oracle.x = me.location.head.x;
+      oracle.head.y = me.location.head.y -1; 
+      oracle.head.x = me.location.head.x;
     }
     else if(move === "up"){
-      oracle.y = me.location.head.y +1;
-      oracle.x = me.location.head.x;
+      oracle.head.y = me.location.head.y +1;
+      oracle.head.x = me.location.head.x;
 
     }
     else if(move === "left"){
-      oracle.x = me.location.head.x -1;
-      oracle.y = me.location.head.y;
+      oracle.head.x = me.location.head.x -1;
+      oracle.head.y = me.location.head.y;
 
     }
     else if(move === "right"){
-      oracle.x = me.location.head.x +1;
-      oracle.y = me.location.head.y;
+      oracle.head.x = me.location.head.x +1;
+      oracle.head.y = me.location.head.y;
     }
     else{
       console.log('error');
