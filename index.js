@@ -77,8 +77,7 @@ function handleMove(request, response) {
 function preventCollision(move, me, possibleMoves) {
   //here we will check what space the "move" we want to make will occupy.
   //move = planned next move we want to verify is safe
-  move = move;
-  me = me; // me contains my snake,  me.location, .head, and .body all contain quordinates
+  // me contains my snake,  me.location, .head, and .body all contain quordinates
   //We want to import gameData and create a variable for the enemies to verify we don't hit an enemy also, unless they are weaker and it's within their head's moves.
   function lookAhead() {
     // in this function we get our current location, and calculate the outcome of the plannedMove in the current board state, TODO: not taking account for our enemies moves.
@@ -108,7 +107,7 @@ function preventCollision(move, me, possibleMoves) {
     return plannedMove;
   }
 
-  function checkHazards(me, plannedMove, move) {
+  function checkHazards(plannedMove) {
     // in this function we verify if the quordinates found in lookAhead are safe to move to.
     let snake = me.location;
     let hazards = [
@@ -138,7 +137,7 @@ function preventCollision(move, me, possibleMoves) {
 
 
     plannedMove = lookAhead(); //get the quordinates of the chosen next move
-    checkHazards(me, plannedMove, move); //check for hazards on the next quordinate, change move if there is danger.
+    checkHazards(plannedMove); //check for hazards on the next quordinate, change move if there is danger.
     //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
     return move;
 }
