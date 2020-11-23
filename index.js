@@ -81,9 +81,8 @@ const snakeFactory = (name, gameData) =>{
   let length;
 
   const checkLocation = ((name) => {
-    let selSnake;
     if(name === "you"){
-       selsnake = gameData.you;
+       let selsnake = gameData.you;
     }
     else{
       //selSnake = enemySnakes[name];
