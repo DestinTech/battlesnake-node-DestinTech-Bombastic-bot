@@ -100,7 +100,9 @@ let oracle={
     }
     return oracle;
   }
-  return lookAhead();
+  nextMove = lookAhead();
+  console.log(nextMove);
+  return nextMove;
 }
 
 
