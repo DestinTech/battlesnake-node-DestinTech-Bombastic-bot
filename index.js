@@ -74,7 +74,8 @@ function preventCollision(gameData,move) {
 }
 
 const snakeFactory = (name, gameData) =>{
-  let enemySnakes = gameData.game.board.snakes;
+  console.log(gameData);
+  //let enemySnakes = gameData.board.snakes;
   console.log(enemySnakes);
   let location;
   let length;
