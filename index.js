@@ -64,7 +64,7 @@ function handleMove(request, response) {
     counter = 0;
   }
 
-  preventCollision(move, me, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
+  move = preventCollision(move, me, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
   console.log(possibleMoves);
   console.log("MOVE: " + move + "\n");
@@ -103,7 +103,6 @@ function preventCollision(move, me, possibleMoves) {
     } else {
       console.log("error");
     }
-
     return plannedMove;
   }
 
@@ -132,7 +131,10 @@ function preventCollision(move, me, possibleMoves) {
         console.log(prop);
       }
       console.log(`the move appears safe, moving ${move}...`);
+       
     }
+    console.log("returning"+ move);
+    return move;
   }
 
 
