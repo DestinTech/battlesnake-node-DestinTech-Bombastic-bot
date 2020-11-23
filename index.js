@@ -117,28 +117,20 @@ function preventCollision(move, me, possibleMoves) {
 
     //check for quordinate == the locations to our expected next move
     console.log("Hazards: ");
-    let i = 0;
-    for (hazard of hazards) {
-      //Loop thoguh all hazards
-      haz = hazard;
-      //console.log({ haz }); //print all the hazards to console.
-      console.log(plannedMove.head);
+    for (hazard of hazards) { //Loop thoguh all hazards
+      console.log("checking quordinates: "+ plannedMove.head);
 
       for (prop of hazard) {
         if (plannedMove.head === prop) {
-          // if the pkanned
           removeMove(move, possibleMoves);
           dangerousMove = move;
-          move =
-            possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
+          move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
           console.log(`DANGER! changing from ${dangerousMove} to ${move}.`);
-        } else {
-          console.log(`the move appears safe, moving ${move}...`);
-        }
-        i++;
-        console.log(prop);
       }
+      console.log(plannedMove.head);
+      console.log(prop);
     }
+    console.log(`the move appears safe, moving ${move}...`); 
   }
 
   plannedMove = lookAhead(); //get the quordinates of the chosen next move
