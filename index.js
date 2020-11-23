@@ -90,10 +90,10 @@ const snakeFactory = (name, gameData) =>{
     }
     console.log(selSnake);
     location = {
-      'head': {
-        'x':selSnake.head.x,
-        'y':selSnake.head.y
-      },
+     // 'head': {
+       // 'x':selSnake.head.x,
+        //'y':selSnake.head.y
+     // },
       //'tail': { 
        // 'x': selSnake.tail.x,
        // 'y': selSnake.tail.y
