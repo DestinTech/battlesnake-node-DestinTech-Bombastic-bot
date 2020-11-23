@@ -111,7 +111,7 @@ let oracle={
   for (let hazard in hazards){
     haz = hazards[hazard];
 
-    console.log("nextMove:  "+nextMove+ "hazard: "+haz) ;
+    console.log({nextMove, hazard}) ;
   }
 
   }
@@ -179,15 +179,11 @@ function stayOnBoard(gameData, possibleMoves){
       let quox = gameData.you.head.x;  //horizontal
       let quoy = gameData.you.head.y; //vertical 
 
-      console.log("width: " +width + ", x: "+ quox + ", y: "+ quoy);
-
       const leftSide = 0;
       const rightSide = width - 1;
       const top = height - 1;
       const bottom = 0;
    
-
-
       /* 
       This method won't work, as it's splicing by location in the array.  The location is changing before the second removal is activated. 
       */
