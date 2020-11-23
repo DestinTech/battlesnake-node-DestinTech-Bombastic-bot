@@ -90,14 +90,14 @@ const snakeFactory = (name, gameData) =>{
     }
     location = {
       'head': {
-        'x':selSnake.head.x,
-        'y':selSnake.head.y
+        'x':[selSnake].head.x,
+        'y':[selSnake].head.y
       },
       'tail': { 
-        'x': selSnake.tail.x,
-        'y': selSnake.tail.y
+        'x': [selSnake].tail.x,
+        'y': [selSnake].tail.y
         },
-      'body':SelSnake.body,
+      'body':[SelSnake].body,
     }
     console.log("snake initialized" + name)
   })();
