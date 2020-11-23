@@ -52,7 +52,16 @@ function handleMove(request, response) {
   console.log("lastMove: " +lastMove);
 
   stayOnBoard(gameData, possibleMoves); // WORKS!!
-  move = stayOnTrack(possibleMoves);
+  let counter=0;
+  if (counter < 5){
+    move = stayOnTrack(possibleMoves);
+    counter++;
+  }
+  else{
+    move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)] //otherwise, random move that's avaialable.
+  }
+
+
   preventCollision(gameData, move, me); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
   console.log(possibleMoves);
