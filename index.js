@@ -74,20 +74,21 @@ function handleMove(request, response) {
   });
 }
 
-function preventCollision(move, me, possibleMoves) { 
+function preventCollision(move, me, possibleMoves) {
   //here we will check what space the "move" we want to make will occupy.
   //move = planned next move we want to verify is safe
   move = move;
   me = me; // me contains my snake,  me.location, .head, and .body all contain quordinates
   //We want to import gameData and create a variable for the enemies to verify we don't hit an enemy also, unless they are weaker and it's within their head's moves.
-  function lookAhead() { // in this function we get our current location, and calculate the outcome of the plannedMove in the current board state, TODO: not taking account for our enemies moves.
+  function lookAhead() {
+    // in this function we get our current location, and calculate the outcome of the plannedMove in the current board state, TODO: not taking account for our enemies moves.
     let plannedMove = {
       head: {
         x: 0,
         y: 0,
       },
     };
-  console.log("lookahead called:" + move)
+    console.log("lookahead called:" + move);
     if (move === "down") {
       plannedMove.head.y = me.location.head.y - 1;
       plannedMove.head.x = me.location.head.x;
@@ -103,10 +104,11 @@ function preventCollision(move, me, possibleMoves) {
     } else {
       console.log("error");
     }
-  
+
     return plannedMove;
   }
-  function checkHazards(me, plannedMove, move,possibleMoves) { // in this function we verify if the quordinates found in lookAhead are safe to move to.
+  function checkHazards(me, plannedMove, move, possibleMoves) {
+    // in this function we verify if the quordinates found in lookAhead are safe to move to.
     let snake = me.location;
     let hazards = [
       //make a list of hazard locations
@@ -116,32 +118,33 @@ function preventCollision(move, me, possibleMoves) {
     //check for quordinate == the locations to our expected next move
     console.log("Hazards: ");
     let i = 0;
-    for (let hazard of hazards) { //Loop thoguh all hazards
+    for (hazard of hazards) {
+      //Loop thoguh all hazards
       haz = hazard;
-      console.log({ haz });//print all the hazards to console.
+      console.log({ haz }); //print all the hazards to console.
       console.log(plannedMove.head);
 
-      if (plannedMove.head === hazards[i]) { // if the pkanned
-        removeMove(move, possibleMoves);
-        dangerousMove = move;
-        move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
-        console.log(`DANGER! changing from ${dangerousMove} to ${move}.`)
+      for (prop of hazard) {
+        if (plannedMove.head === prop) {
+          // if the pkanned
+          removeMove(move, possibleMoves);
+          dangerousMove = move;
+          move =
+            possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
+          console.log(`DANGER! changing from ${dangerousMove} to ${move}.`);
+        } else {
+          console.log(`the move appears safe, moving ${move}...`);
+        }
+        i++;
+        console.log(i);
       }
-      else{
-        console.log(`the move appears safe, moving ${move}...`)
-      }
-      i++;
-      console.log(i);
     }
-
   }
 
   plannedMove = lookAhead(); //get the quordinates of the chosen next move
   checkHazards(me, plannedMove, move, possibleMoves); //check for hazards on the next quordinate, change move if there is danger.
   //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
   return move;
-
-
 }
 
 const snakeFactory = (name, gameData) => {
