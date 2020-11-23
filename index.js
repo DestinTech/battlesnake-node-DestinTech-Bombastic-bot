@@ -115,11 +115,13 @@ function preventCollision(move, me, possibleMoves) {
 
     //check for quordinate == the locations to our expected next move
     console.log("Hazards: ");
+    let i = 0;
     for (let hazard of hazards) { //Loop thoguh all hazards
       haz = hazard;
       console.log({ haz });//print all the hazards to console.
-      console.log(plannedMove.head)
-      if (plannedMove.head === hazard) { // if the pkanned
+      console.log(plannedMove.head);
+
+      if (plannedMove.head === hazards[i]) { // if the pkanned
         removeMove(move, possibleMoves);
         dangerousMove = move;
         move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
@@ -128,7 +130,10 @@ function preventCollision(move, me, possibleMoves) {
       else{
         console.log(`the move appears safe, moving ${move}...`)
       }
+      i++;
+      console.log(i);
     }
+
   }
 
   plannedMove = lookAhead(); //get the quordinates of the chosen next move
