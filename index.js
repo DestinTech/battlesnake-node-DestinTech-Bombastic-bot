@@ -120,7 +120,7 @@ function preventCollision(move, me, possibleMoves) {
     console.log("Hazards: ");
     for (hazard of hazards) {
       //Loop thoguh all hazards
-      console.log("checking quordinates: " + plannedMove.head);
+      console.log(plannedMove.head);
 
       for (prop of hazard) {
         if (plannedMove.head === prop) {
