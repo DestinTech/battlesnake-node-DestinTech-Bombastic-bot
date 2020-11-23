@@ -110,7 +110,7 @@ let oracle={
     //check for quordinate == the locations to our expected next move
   console.log("Hazards: "+ hazards);
   for (let hazard in hazards){
-    console.log(hazard);
+    console.log(harards[hazard]);
   }
 
   }
