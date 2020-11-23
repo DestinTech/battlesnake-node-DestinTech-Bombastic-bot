@@ -73,8 +73,8 @@ function preventCollision(gameData,move, me) {
 console.log(me)
 let oracle={
   head:{
-  'x':{},
-  'y':{}
+  'x':0,
+  'y':0
   }
 }
     if (move === "down"){
