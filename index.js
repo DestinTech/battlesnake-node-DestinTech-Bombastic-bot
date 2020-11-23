@@ -86,7 +86,7 @@ const snakeFactory = (name, gameData) =>{
        selsnake = gameData.you;
     }
     else{
-      selSnake = enemySnakes[name];
+      //selSnake = enemySnakes[name];
     }
     location = {
       'head': {
