@@ -106,6 +106,7 @@ function preventCollision(move, me, possibleMoves) {
     return plannedMove;
   }
 
+
   function checkHazards(plannedMove) {
     // in this function we verify if the quordinates found in lookAhead are safe to move to.
     let snake = me.location;
@@ -124,7 +125,7 @@ function preventCollision(move, me, possibleMoves) {
           removeMove(move, possibleMoves);
           dangerousMove = move;
           console.log(`DANGER! changing from ${dangerousMove}.`);
-          return possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
+           move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
         }
         console.log(plannedMove.head);
         console.log(prop);
