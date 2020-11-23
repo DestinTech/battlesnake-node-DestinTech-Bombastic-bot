@@ -44,19 +44,20 @@ function handleEnd(request, response) {
 
 function handleMove(request, response) {
   var gameData = request.body;
-  console.log("New Move... Thinking...: \n");
+  console.log("\n New Move... Thinking...");
   console.log("lastMove: " +lastMove);
 
   var possibleMoves = ['up', 'down', 'left', 'right'];
   let move;
 
-  stayOnBoard(gameData, possibleMoves, lastMove); // WORKS!!
+  stayOnBoard(gameData, possibleMoves); // WORKS!!
   preventCollision(gameData, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
-  move = stayOnTrack(lastMove, possibleMoves);
+  move = stayOnTrack(possibleMoves);
 
-  console.log("\n"+ possibleMoves);
+  console.log(possibleMoves);
   
-  console.log('MOVE: ' + move)
+  console.log('MOVE: ' + move + "\n")
+  lastMove = move;
   response.status(200).send({
     move: move
   });
@@ -97,7 +98,7 @@ const snakeFactory = (name) =>{
 }
 
 
-function stayOnBoard(gameData, possibleMoves, lastMove){
+function stayOnBoard(gameData, possibleMoves){
   function removeMove(x) {
     let index = possibleMoves.indexOf(x);
     if (index > -1){
@@ -144,7 +145,7 @@ function stayOnBoard(gameData, possibleMoves, lastMove){
       }        
 }
 
-function stayOnTrack(lastMove, possibleMoves){
+function stayOnTrack(possibleMoves){
   let index = possibleMoves.indexOf(lastMove); //find if the last move is in the list
     if (index > -1){ // if it is in the list
       return lastMove;  // do what we did last if it's an option.
