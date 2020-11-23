@@ -117,26 +117,29 @@ function preventCollision(move, me, possibleMoves) {
 
     //check for quordinate == the locations to our expected next move
     console.log("Hazards: ");
-    for (hazard of hazards) { //Loop thoguh all hazards
-      console.log("checking quordinates: "+ plannedMove.head);
+    for (hazard of hazards) {
+      //Loop thoguh all hazards
+      console.log("checking quordinates: " + plannedMove.head);
 
       for (prop of hazard) {
         if (plannedMove.head === prop) {
           removeMove(move, possibleMoves);
           dangerousMove = move;
-          move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
+          move =
+            possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
           console.log(`DANGER! changing from ${dangerousMove} to ${move}.`);
+        }
+        console.log(plannedMove.head);
+        console.log(prop);
       }
-      console.log(plannedMove.head);
-      console.log(prop);
+      console.log(`the move appears safe, moving ${move}...`);
     }
-    console.log(`the move appears safe, moving ${move}...`); 
-  }
 
-  plannedMove = lookAhead(); //get the quordinates of the chosen next move
-  checkHazards(me, plannedMove, move, possibleMoves); //check for hazards on the next quordinate, change move if there is danger.
-  //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
-  return move;
+    plannedMove = lookAhead(); //get the quordinates of the chosen next move
+    checkHazards(me, plannedMove, move, possibleMoves); //check for hazards on the next quordinate, change move if there is danger.
+    //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
+    return move;
+  }
 }
 
 const snakeFactory = (name, gameData) => {
@@ -168,7 +171,7 @@ const snakeFactory = (name, gameData) => {
 
   checkLocation();
   return { name, location, length }; // return the snake
-};
+}
 
 function removeMove(move, possibleMoves) {
   let index = possibleMoves.indexOf(move);
