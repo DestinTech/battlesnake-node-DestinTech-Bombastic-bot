@@ -72,7 +72,7 @@ function preventCollision(gameData,move, me) {
     }
   }
   
-  function lookAhead(oracle){
+  function lookAhead(){
 
     if (move === "down"){
       oracle.y = me.head.y -1; 
@@ -92,10 +92,9 @@ function preventCollision(gameData,move, me) {
       oracle.x = me.head.x +1;
       oracle.y = me.head.y;
     }
-    return oracle;
-
+    return oracle
   }
-  oracle = lookAhead();
+  console.log(lookAhead());
   console.log(oracle);
 }
 
