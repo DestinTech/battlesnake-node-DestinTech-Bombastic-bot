@@ -95,7 +95,7 @@ const snakeFactory = (name) =>{
 }
 
 
-function stayOnBoard(gameData, possibleMoves){
+function stayOnBoard(gameData, possibleMoves, lastMove){
   function removeMove(x) {
     let index = possibleMoves.indexOf(x);
     if (index > -1){
