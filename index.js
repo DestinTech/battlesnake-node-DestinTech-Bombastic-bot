@@ -125,17 +125,15 @@ function preventCollision(move, me, possibleMoves) {
           removeMove(move, possibleMoves);
           dangerousMove = move;
           console.log(`DANGER! changing from ${dangerousMove}.`);
-           move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
+           plannedMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
         }
-        console.log(plannedMove.head);
-        console.log(prop);
       }
       console.log(`the move appears safe, moving ${move}...`);
        
     }
 
     console.log("returning"+ move);
-    return move;
+    return plannedMove;
   }
 
 
