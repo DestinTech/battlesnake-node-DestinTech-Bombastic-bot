@@ -41,6 +41,7 @@ function handleEnd(request, response) {
   response.status(200).send('ok')
 }
 
+let counter=0;
 
 function handleMove(request, response) {
   var gameData = request.body;
@@ -52,13 +53,13 @@ function handleMove(request, response) {
   console.log("lastMove: " +lastMove);
 
   stayOnBoard(gameData, possibleMoves); // WORKS!!
-  let counter=0;
-  if (counter < 5){
+  if (counter < 3){
     move = stayOnTrack(possibleMoves);
     counter++;
   }
   else{
     move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)] //otherwise, random move that's avaialable.
+    counter = 0;
   }
 
 
