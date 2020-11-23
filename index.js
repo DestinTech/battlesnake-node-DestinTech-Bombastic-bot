@@ -102,7 +102,7 @@ function preventCollision(gameData, move, me) {
     }
     return oracle;
   }
-
+}
   function checkHazards(me, nextMove, possibleMoves) {
     let snake = me.location;
     let hazards = [
@@ -125,7 +125,7 @@ function preventCollision(gameData, move, me) {
   //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
   console.log(nextMove);
   return nextMove;
-}
+};
 
 const snakeFactory = (name, gameData) => {
   //let enemySnakes = gameData.board.snakes;
