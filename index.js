@@ -79,7 +79,7 @@ const snakeFactory = (name, gameData) =>{
   let length;
   let selSnake;
   name = name;
-  const checkLocation = ((name, gameData) => {
+  const checkLocation = (() => {
     if(name === "you"){
         selSnake = gameData.you;
         console.log(selSnake);
