@@ -50,7 +50,7 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right'];
   let move;
 
-  stayOnBoard(gameData, possibleMoves); // WORKS!!
+  stayOnBoard(gameData, possibleMoves, lastMove); // WORKS!!
   preventCollision(gameData, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
   move = stayOnTrack(lastMove, possibleMoves);
 
@@ -61,8 +61,10 @@ function handleMove(request, response) {
     move: move
   });
 }
-function preventCollision(gameData) {
+function preventCollision(gameData,move) {
+  // check what quordinate we will occupy on next move.
 
+   //if next move !available, remove it.
 }
 
 const snakeFactory = (name) =>{
@@ -118,7 +120,9 @@ function stayOnBoard(gameData, possibleMoves, lastMove){
       const rightSide = width - 1;
       const top = height - 1;
       const bottom = 0;
-      
+   
+
+
       /* 
       This method won't work, as it's splicing by location in the array.  The location is changing before the second removal is activated. 
       */
