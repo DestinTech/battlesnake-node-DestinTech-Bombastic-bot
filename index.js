@@ -121,7 +121,7 @@ function preventCollision(move, me, possibleMoves) {
     for (hazard of hazards) {
       //Loop thoguh all hazards
       haz = hazard;
-      console.log({ haz }); //print all the hazards to console.
+      //console.log({ haz }); //print all the hazards to console.
       console.log(plannedMove.head);
 
       for (prop of hazard) {
@@ -136,7 +136,7 @@ function preventCollision(move, me, possibleMoves) {
           console.log(`the move appears safe, moving ${move}...`);
         }
         i++;
-        console.log(i);
+        console.log(prop);
       }
     }
   }
