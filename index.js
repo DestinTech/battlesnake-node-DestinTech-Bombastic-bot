@@ -65,6 +65,7 @@ function handleMove(request, response) {
 
 function preventCollision(gameData,move, me) {
   //here we will check what space the "move" we want to make will occupy.
+  me = me;
   let oracle={
     head:{
     'x':{},
@@ -72,7 +73,8 @@ function preventCollision(gameData,move, me) {
     }
   }
   
-  function lookAhead(me){
+  
+  function lookAhead(){
 console.log(me)
     if (move === "down"){
       oracle.y = me.location.head.y -1; 
