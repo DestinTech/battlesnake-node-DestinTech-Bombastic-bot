@@ -94,7 +94,6 @@ console.log(me)
       oracle.x = me.location.head.x +1;
       oracle.y = me.location.head.y;
     }
-    return oracle
   }
   console.log(lookAhead());
   console.log(oracle);
