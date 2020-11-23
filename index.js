@@ -101,8 +101,9 @@ let oracle={
   }
 
 
-  function checkHazards(me) {
-    snake = me.location; 
+  function checkHazards(me, nextMove) {
+    let snake = me.location; 
+    console.log(snake)
     let hazards = {    //make a list of hazard locations
       "1": snake.body,
     }
@@ -117,7 +118,7 @@ let oracle={
 
 
   nextMove = lookAhead();//get the quordinates of the chosen next move
-  checkHazards(nextMove);//check for hazards on the next quordinate,
+  checkHazards(me, nextMove);//check for hazards on the next quordinate,
   //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
   console.log(nextMove);
   return nextMove;
