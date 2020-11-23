@@ -74,7 +74,7 @@ function preventCollision(gameData,move) {
 }
 
 const snakeFactory = (name, gameData) =>{
-  console.log(gameData);
+  let gameData = gameData;
   //let enemySnakes = gameData.board.snakes;
   //console.log(enemySnakes);
   let location;
@@ -91,14 +91,14 @@ const snakeFactory = (name, gameData) =>{
     console.log(selSnake);
     location = {
       'head': {
-        'x':[selSnake].head.x,
-        'y':[selSnake].head.y
+        'x':selSnake.head.x,
+        'y':selSnake.head.y
       },
-      'tail': { 
-        'x': [selSnake].tail.x,
-        'y': [selSnake].tail.y
-        },
-      'body':[SelSnake].body,
+      //'tail': { 
+       // 'x': selSnake.tail.x,
+       // 'y': selSnake.tail.y
+       // },
+      //'body':[SelSnake].body,
     }
     console.log("snake initialized" + name)
   })();
