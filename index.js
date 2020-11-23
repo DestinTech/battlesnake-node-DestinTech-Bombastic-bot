@@ -44,33 +44,58 @@ function handleEnd(request, response) {
 
 function handleMove(request, response) {
   var gameData = request.body;
-  console.log("\n New Move... Thinking...");
-  console.log("lastMove: " +lastMove);
-
   var possibleMoves = ['up', 'down', 'left', 'right'];
   let move;
   let me = snakeFactory('you', gameData);
-  console.log(me.location.body);
+  //TODO: make a class for game board that holds me, enemies, and the game board variables along with any other properties
+  console.log("\n New Move... Thinking...");
+  console.log("lastMove: " +lastMove);
+
   stayOnBoard(gameData, possibleMoves); // WORKS!!
-  preventCollision(gameData, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
+  preventCollision(gameData, move, me); // TODO: define the quardinates of the body, and keep 1 block from the snake
   move = stayOnTrack(possibleMoves);
 
   console.log(possibleMoves);
-  
   console.log('MOVE: ' + move + "\n")
   lastMove = move;
   response.status(200).send({
     move: move
   });
 }
-function preventCollision(gameData,move) {
-  // check what quordinate we will occupy on next move.
 
-   //if next move !available, remove it.
+function preventCollision(gameData,move, me) {
+  //here we will check what space the "move" we want to make will occupy.
 
-   
+  function lookAhead(){
+  let oracle={
+    head:{
+    'x':{},
+    'y':{}
+    }
+  };
+    if (move === "down"){
+      oracle.y = me.head.y -1; 
+      oracle.x = me.head.x;
+    }
+    else if(move === "up"){
+      oracle.y = me.head.y +1;
+      oracle.x = me.head.x;
 
+    }
+    else if(move === "left"){
+      oracle.x = me.head.x -1;
+      oracle.y = me.head.y;
+
+    }
+    else if(move === "right"){
+      oracle.x = me.head.x +1;
+      oracle.y = me.head.y;
+
+    }
+  }
+  console.log(oracle);
 }
+
 
 const snakeFactory = (name, gameData) =>{
   //let enemySnakes = gameData.board.snakes;
@@ -187,6 +212,9 @@ function stayOnTrack(possibleMoves){
 //     shout: ''
 //   }
 // }
+
+
+
 
 
 // [ { x: 5, y: 6 },
