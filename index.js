@@ -95,7 +95,7 @@ const snakeFactory = (name, gameData) =>{
        // 'x': selSnake.tail.x,
        // 'y': selSnake.tail.y
        // },
-      //'body':[SelSnake].body,
+      'body': selSnake.body,
     }
     console.log("snake initialized: " + name)
   });
