@@ -82,24 +82,23 @@ const snakeFactory = (name, gameData) =>{
   const checkLocation = (() => {
     if(name === "you"){
         selSnake = gameData.you;
-        console.log(selSnake);
     }
     else{
       //selSnake = enemySnakes[name];
     }
     console.log(selSnake);
     location = {
-     // 'head': {
-       // 'x':selSnake.head.x,
-        //'y':selSnake.head.y
-     // },
+      'head': {
+        'x':selSnake.head.x,
+        'y':selSnake.head.y
+      },
       //'tail': { 
        // 'x': selSnake.tail.x,
        // 'y': selSnake.tail.y
        // },
       //'body':[SelSnake].body,
     }
-    console.log("snake initialized" + name)
+    console.log("snake initialized: " + name)
   });
 
 
