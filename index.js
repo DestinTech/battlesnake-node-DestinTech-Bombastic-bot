@@ -111,7 +111,7 @@ let oracle={
   for (let hazard in hazards){
     haz = hazards[hazard];
 
-    console.log({nextMove, hazard}) ;
+    console.log({nextMove, }) ;
   }
 
   }
