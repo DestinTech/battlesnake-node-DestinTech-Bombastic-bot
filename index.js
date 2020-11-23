@@ -70,7 +70,6 @@ function preventCollision(gameData,move, me) {
   
   
   function lookAhead(){
-console.log(me)
 let oracle={
   head:{
   'x':0,
@@ -100,10 +99,31 @@ let oracle={
     }
     return oracle;
   }
-  nextMove = lookAhead();
+
+
+  function checkHazards(me) {
+    snake = me.location; 
+    let hazards = {    //make a list of hazard locations
+      "1": snake.body,
+    }
+    //check for quordinate == the locations to our expected next move
+  console.log("Hazards: "+ hazards);
+  for (let hazard in hazards){
+    console.log(hazard);
+  }
+
+  }
+
+
+
+  nextMove = lookAhead();//get the quordinates of the chosen next move
+  checkHazards(nextMove);//check for hazards on the next quordinate,
+  //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
   console.log(nextMove);
   return nextMove;
 }
+
+
 
 
 const snakeFactory = (name, gameData) =>{
