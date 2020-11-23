@@ -73,24 +73,24 @@ function preventCollision(gameData,move, me) {
   }
   
   function lookAhead(me){
-
+console.log(me)
     if (move === "down"){
-      oracle.y = me.head.y -1; 
-      oracle.x = me.head.x;
+      oracle.y = me.location.head.y -1; 
+      oracle.x = me.location.head.x;
     }
     else if(move === "up"){
-      oracle.y = me.head.y +1;
-      oracle.x = me.head.x;
+      oracle.y = me.location.head.y +1;
+      oracle.x = me.location.head.x;
 
     }
     else if(move === "left"){
-      oracle.x = me.head.x -1;
-      oracle.y = me.head.y;
+      oracle.x = me.location.head.x -1;
+      oracle.y = me.location.head.y;
 
     }
     else if(move === "right"){
-      oracle.x = me.head.x +1;
-      oracle.y = me.head.y;
+      oracle.x = me.location.head.x +1;
+      oracle.y = me.location.head.y;
     }
     return oracle
   }
