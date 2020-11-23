@@ -49,9 +49,7 @@ function handleMove(request, response) {
   var possibleMoves = ['up', 'down', 'left', 'right']
 
 
-
-  
-  stayOnBoard(gameData); // WORKS!!
+  stayOnBoard(gameData, possibleMoves); // WORKS!!
   preventCollision(gameData); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
     let index = possibleMoves.indexOf(lastMove); //find if the last move is in the list
@@ -107,7 +105,7 @@ const snakeFactory = (name) =>{
 }
 
 
-function stayOnBoard(gameData){
+function stayOnBoard(gameData, possibleMoves){
   function removeMove(x) {
     let index = possibleMoves.indexOf(x);
     if (index > -1){
