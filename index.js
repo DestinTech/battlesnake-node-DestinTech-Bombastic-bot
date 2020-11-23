@@ -80,14 +80,14 @@ function preventCollision(move, me, possibleMoves) {
   move = move;
   me = me; // me contains my snake,  me.location, .head, and .body all contain quordinates
   //We want to import gameData and create a variable for the enemies to verify we don't hit an enemy also, unless they are weaker and it's within their head's moves.
-  function lookAhead(move) { // in this function we get our current location, and calculate the outcome of the plannedMove in the current board state, TODO: not taking account for our enemies moves.
+  function lookAhead() { // in this function we get our current location, and calculate the outcome of the plannedMove in the current board state, TODO: not taking account for our enemies moves.
     let plannedMove = {
       head: {
         x: 0,
         y: 0,
       },
     };
-  
+  console.log("lookahead called:" + move)
     if (move === "down") {
       plannedMove.head.y = me.location.head.y - 1;
       plannedMove.head.x = me.location.head.x;
