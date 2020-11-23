@@ -64,7 +64,7 @@ function handleMove(request, response) {
     counter = 0;
   }
 
-  preventCollision(gameData, move, me); // TODO: define the quardinates of the body, and keep 1 block from the snake
+  preventCollision(move, me, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
   console.log(possibleMoves);
   console.log("MOVE: " + move + "\n");
@@ -74,58 +74,70 @@ function handleMove(request, response) {
   });
 }
 
-function preventCollision(gameData, move, me) {
+function preventCollision(move, me, possibleMoves) { 
   //here we will check what space the "move" we want to make will occupy.
-  me = me;
-
-  function lookAhead() {
-    let oracle = {
+  //move = planned next move we want to verify is safe
+  move = move;
+  me = me; // me contains my snake,  me.location, .head, and .body all contain quordinates
+  //We want to import gameData and create a variable for the enemies to verify we don't hit an enemy also, unless they are weaker and it's within their head's moves.
+  function lookAhead(move) { // in this function we get our current location, and calculate the outcome of the plannedMove in the current board state, TODO: not taking account for our enemies moves.
+    let plannedMove = {
       head: {
         x: 0,
         y: 0,
       },
     };
+  
     if (move === "down") {
-      oracle.head.y = me.location.head.y - 1;
-      oracle.head.x = me.location.head.x;
+      plannedMove.head.y = me.location.head.y - 1;
+      plannedMove.head.x = me.location.head.x;
     } else if (move === "up") {
-      oracle.head.y = me.location.head.y + 1;
-      oracle.head.x = me.location.head.x;
+      plannedMove.head.y = me.location.head.y + 1;
+      plannedMove.head.x = me.location.head.x;
     } else if (move === "left") {
-      oracle.head.x = me.location.head.x - 1;
-      oracle.head.y = me.location.head.y;
+      plannedMove.head.x = me.location.head.x - 1;
+      plannedMove.head.y = me.location.head.y;
     } else if (move === "right") {
-      oracle.head.x = me.location.head.x + 1;
-      oracle.head.y = me.location.head.y;
+      plannedMove.head.x = me.location.head.x + 1;
+      plannedMove.head.y = me.location.head.y;
     } else {
       console.log("error");
     }
-    return oracle;
+  
+    return plannedMove;
   }
-}
-  function checkHazards(me, nextMove, possibleMoves) {
+  function checkHazards(me, plannedMove, move,possibleMoves) { // in this function we verify if the quordinates found in lookAhead are safe to move to.
     let snake = me.location;
     let hazards = [
       //make a list of hazard locations
-      snake.body,
+      snake.body, //hazards of my own snakes body
     ];
+
     //check for quordinate == the locations to our expected next move
     console.log("Hazards: ");
-    for (let hazard in hazards) {
+    for (let hazard in hazards) { //Loop thoguh all hazards
       haz = hazards[hazard];
-      console.log({ haz });
-      if (nextMove === hazards[hazard]) {
-        removeMove(nextMove, possibleMoves);
+      console.log({ haz });//print all the hazards to console.
+
+      if (plannedMove === hazards[hazard]) { // if the pkanned
+        removeMove(move, possibleMoves);
+        dangerousMove = move;
+        move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
+        console.log(`DANGER! changing from ${dangerousMove} to ${move}.`)
+      }
+      else{
+        console.log(`the move appears safe, moving ${move}...`)
       }
     }
-  
+  }
 
-  nextMove = lookAhead(); //get the quordinates of the chosen next move
-  checkHazards(me, nextMove, possibleMoves); //check for hazards on the next quordinate,
+  plannedMove = lookAhead(); //get the quordinates of the chosen next move
+  checkHazards(me, plannedMove, move, possibleMoves); //check for hazards on the next quordinate, change move if there is danger.
   //TODO:check for enemies close to the next quordinate, to see if it's a head. If it's a head, compare size. if size is bigger, move towards quordinate.
-  console.log(nextMove);
-  return nextMove;
-};
+  return move;
+
+
+}
 
 const snakeFactory = (name, gameData) => {
   //let enemySnakes = gameData.board.snakes;
