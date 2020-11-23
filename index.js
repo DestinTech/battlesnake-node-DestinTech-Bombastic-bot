@@ -103,9 +103,9 @@ let oracle={
 
   function checkHazards(me, nextMove) {
     let snake = me.location; 
-    let hazards = {    //make a list of hazard locations
-      "1": snake.body,
-    }
+    let hazards = [    //make a list of hazard locations
+      snake.body,
+    ]
     //check for quordinate == the locations to our expected next move
   console.log("Hazards: ");
   for (let hazard in hazards){
