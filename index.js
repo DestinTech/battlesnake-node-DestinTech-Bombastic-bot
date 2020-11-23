@@ -123,8 +123,7 @@ function stayOnBoard(gameData){
       let width = gameData.board.width;
       let quox = gameData.you.head.x;  //horizontal
       let quoy = gameData.you.head.y; //vertical 
-      let quoxTail = gameData.you.tail.x;
-      let quoyTail = gameData.you.tail.y;
+
       console.log("width: " +width + ", x: "+ quox + ", y: "+ quoy);
 
       const leftSide = 0;
