@@ -82,16 +82,16 @@ function preventCollision(move, me, possibleMoves) {
     };
     console.log("lookahead called:" + move);
     if (move === "down") {
-      plannedMove.head.y = me.location.head.y - 2;
+      plannedMove.head.y = me.location.head.y - 1;
       plannedMove.head.x = me.location.head.x;
     } else if (move === "up") {
-      plannedMove.head.y = me.location.head.y + 2;
+      plannedMove.head.y = me.location.head.y + 1;
       plannedMove.head.x = me.location.head.x;
     } else if (move === "left") {
-      plannedMove.head.x = me.location.head.x - 2;
+      plannedMove.head.x = me.location.head.x - 1;
       plannedMove.head.y = me.location.head.y;
     } else if (move === "right") {
-      plannedMove.head.x = me.location.head.x + 2;
+      plannedMove.head.x = me.location.head.x + 1;
       plannedMove.head.y = me.location.head.y;
     } else {
       console.log("error");
