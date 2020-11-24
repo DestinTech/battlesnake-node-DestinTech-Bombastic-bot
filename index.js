@@ -57,7 +57,7 @@ function handleMove(request, response) {
 
   // randomize move every 3 moves to allow collision detection testing
   move = stayOnTrack(possibleMoves);
-  makeTailDistance();
+  makeTailDistance(gameData);
   move = preventCollision(move, me, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
   console.log(possibleMoves);
@@ -66,6 +66,15 @@ function handleMove(request, response) {
   response.status(200).send({
     move: move,
   });
+}
+
+function makeTailDistance(gameData){
+
+  let index = gameData.you.length(); //find if the last move is in the list
+  console.log(index);
+  let tail = gameData.you.body[index];
+  console.log(tail);
+
 }
 
 function preventCollision(move, me, possibleMoves) {
@@ -100,14 +109,6 @@ function preventCollision(move, me, possibleMoves) {
     return plannedMove;
   }
 
-  function makeTailDistance(gameData){
-
-    let index = gameData.you.length(); //find if the last move is in the list
-    console.log(index);
-    let tail = gameData.you.body[index];
-    console.log(tail);
-
-  }
 
 
   function checkHazards(plannedMove) {
