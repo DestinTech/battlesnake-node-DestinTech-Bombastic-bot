@@ -72,7 +72,7 @@ function makeTailDistance(gameData){
   
   var size = Object.keys(gameData.you.body).length;
   console.log(size);
-  let tail = gameData.you.body[size];
+  let tail = gameData.you.body[size-1];
   console.log(tail);
 
 }
