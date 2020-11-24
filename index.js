@@ -56,14 +56,7 @@ function handleMove(request, response) {
   stayOnBoard(gameData, possibleMoves); // WORKS!!
 
   // randomize move every 3 moves to allow collision detection testing
-  if (counter < 3) {
-    move = stayOnTrack(possibleMoves);
-    counter++;
-  } else {
-    move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
-    counter = 0;
-  }
-
+  move = stayOnTrack(possibleMoves);
   move = preventCollision(move, me, possibleMoves); // TODO: define the quardinates of the body, and keep 1 block from the snake
 
   console.log(possibleMoves);
@@ -125,7 +118,7 @@ function preventCollision(move, me, possibleMoves) {
           removeMove(move, possibleMoves);
           dangerousMove = move;
           console.log(`DANGER! changing from ${dangerousMove}.`);
-           plannedMove = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
+           move = possibleMoves[Math.floor(Math.random() * possibleMoves.length)]; //otherwise, random move that's avaialable.
         }
       }
       console.log(`the move appears safe, moving ${move}...`);
@@ -133,7 +126,7 @@ function preventCollision(move, me, possibleMoves) {
     }
 
     console.log("returning"+ move);
-    return plannedMove;
+    return move;
   }
 
 
