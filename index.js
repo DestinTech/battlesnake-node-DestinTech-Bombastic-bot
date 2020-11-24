@@ -71,9 +71,8 @@ function handleMove(request, response) {
 function makeTailDistance(gameData){
   
   var size = Object.keys(gameData.you.body).length;
-  let index = gameData.you.length(); //find if the last move is in the list
-  console.log(index);
-  let tail = gameData.you.body[index];
+  console.log(size);
+  let tail = gameData.you.body[size];
   console.log(tail);
 
 }
